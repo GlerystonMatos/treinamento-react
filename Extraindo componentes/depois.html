@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Extraindo componentes - Depois</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      function formatDate(date) {
+        return date.toLocaleDateString();
+      }
+
+      function Avatar(props) {
+        return (
+          <img
+            className="Avatar"
+            src={props.user.avatarUrl}
+            alt={props.user.name}
+          />
+        );
+      }
+
+      function UserInfo(props) {
+        return (
+          <div className="UserInfo">
+            <Avatar user={props.user} />
+            <div className="UserInfo-name">{props.user.name}</div>
+          </div>
+        );
+      }
+
+      function Comment(props) {
+        return (
+          <div className="Comment">
+            <UserInfo user={props.author} />
+            <div className="Comment-text">{props.text}</div>
+            <div className="Comment-date">
+              {formatDate(props.date)}
+            </div>
+          </div>
+        );
+      }
+
+      const comment = {
+        date: new Date(),
+        text: 'Espero que você goste de aprender React!',
+        author: {
+          name: 'Gleryston Matos',
+          avatarUrl: 'https://avatars1.githubusercontent.com/u/7102448?s=460&u=14c8dd28185945e6027327c8cac16ffc2a0a5b91&v=4',
+        },
+      };
+      ReactDOM.render(
+        <Comment
+          date={comment.date}
+          text={comment.text}
+          author={comment.author}
+        />,
+        document.getElementById('root')
+      );
+
+    </script>
+  </body>
+</html>
