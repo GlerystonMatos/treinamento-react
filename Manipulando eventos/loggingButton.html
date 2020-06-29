@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Manipulando eventos</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+/*         class LoggingButton extends React.Component {
+        // Essa sintaxe garante que o 'this' seja vinculado ao handleClick.
+        // Atenção: essa é uma sintaxe *experimental*.
+        handleClick = () => {
+          console.log('this is:', this);
+        }
+      
+        render() {
+          return (
+            <button onClick={this.handleClick}>
+              Clique Aqui
+            </button>
+          );
+        }
+      } */
+
+      class LoggingButton extends React.Component {
+        handleClick() {
+          console.log('this is:', this);
+        }
+      
+        render() {
+          // Essa sintaxe garante que o 'this' seja vinculado ao handleClick.
+          return (
+            <button onClick={() => this.handleClick()}>
+              Click me
+            </button>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <LoggingButton />,
+        document.getElementById('root')
+      );
+
+    </script>
+  </body>
+</html>

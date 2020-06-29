@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Manipulando eventos</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      class Toggle extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { isToggleOn: true };
+        
+          // Aqui utilizamos o 'bind' para que o 'this' funcione dentro da nossa callback
+          this.handleClick = this.handleClick.bind(this);
+        }
+      
+        handleClick() {
+          this.setState(state => ({
+            isToggleOn: !state.isToggleOn
+          }));
+        }
+      
+        render() {
+          return (
+            <button onClick={this.handleClick}>
+              {this.state.isToggleOn ? 'ON' : 'OFF'}
+            </button>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <Toggle />,
+        document.getElementById('root')
+      );
+
+    </script>
+  </body>
+</html>
