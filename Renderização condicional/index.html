@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Renderização condicional</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      function UserGreeting(props) {
+        return <h1>Bem vindo de volta!</h1>;
+      }
+
+      function GuestGreeting(props) {
+        return <h1>Por favor inscreva-se.</h1>;
+      }
+
+      function Greeting(props) {
+        const isLoggedIn = props.isLoggedIn;
+        if (isLoggedIn) {
+          return <UserGreeting />;
+        }
+        return <GuestGreeting />;
+      }
+
+      ReactDOM.render(
+        // Tente mudar para isLoggedIn = {true}:
+        <Greeting isLoggedIn={false} />,
+        document.getElementById('root')
+      );
+
+    </script>
+  </body>
+</html>
