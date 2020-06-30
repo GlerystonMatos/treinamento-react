@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chaves</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      const numbers = [1, 2, 3, 4, 5];
+      const listItems = numbers.map((number) =>
+        <li key={number.toString()}>
+          {number}
+        </li>
+      );
+
+      const todoItems = todos.map((todo) =>
+        <li key={todo.id}>
+          {todo.text}
+        </li>
+      );
+
+      const todoItems = todos.map((todo, index) =>
+        // Apenas faça isso caso os itens não possuam IDs estáveis
+        <li key={index}>
+          {todo.text}
+        </li>
+      );
+
+    </script>
+  </body>
+</html>
