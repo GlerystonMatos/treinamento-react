@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Usando o state corretamente</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      // Errado
+      this.state.comment = 'Hello';
+
+      // Correto
+      this.setState({comment: 'Hello'});
+
+      // Errado
+      this.setState({
+        counter: this.state.counter + this.props.increment,
+      });
+
+      // Correto
+      this.setState((state, props) => ({
+        counter: state.counter + props.increment
+      }));
+
+      // Correto
+      this.setState(function(state, props) {
+        return {
+          counter: state.counter + props.increment
+        };
+      });
+
+      constructor(props) {
+        super(props);
+        this.state = {
+          posts: [],
+          comments: []
+        };
+      }
+
+      componentDidMount() {
+       fetchPosts().then(response => {
+         this.setState({
+           posts: response.posts
+         });
+       });
+     
+       fetchComments().then(response => {
+         this.setState({
+           comments: response.comments
+         });
+       });
+     }
+
+    </script>
+  </body>
+</html>
