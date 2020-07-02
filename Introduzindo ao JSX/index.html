@@ -12,34 +12,34 @@
     <script type="text/babel">
 
       /* const e = React.createElement;
-          
-      // Exibe um "Like" <button>
+
+      // Exibe um "Gostar" <button>
       return e(
         'button',
         { onClick: () => this.setState({ liked: true }) },
-        'Like'
+        'Gostar'
       ); */
 
-      /* // Exibe um "Like" <button>
+      /* // Exibe um "Gostar" <button>
       return (
         <button onClick={() => this.setState({ liked: true })}>
-          Like
+          Gostar
         </button>
       ); */
 
       function formatName(user) {
         return user.firstName + ' ' + user.lastName;
       }
-     
+
       const user = {
-        firstName: 'Harper',
-        lastName: 'Perez'
+        firstName: 'Gleryston',
+        lastName: 'Matos'
       };
-     
+
       const element = (
-        <h1>Hello, {formatName(user)}!</h1>
+        <h1>Olá, {formatName(user)}!</h1>
       );
-      
+
       ReactDOM.render(element, document.getElementById('root'));
 
     </script>

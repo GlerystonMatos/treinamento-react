@@ -12,10 +12,10 @@
     <script type="text/babel">
 
       // Errado
-      this.state.comment = 'Hello';
+      this.state.comment = 'Olá';
 
       // Correto
-      this.setState({comment: 'Hello'});
+      this.setState({comment: 'Olá'});
 
       // Errado
       this.setState({
@@ -48,7 +48,7 @@
            posts: response.posts
          });
        });
-     
+
        fetchComments().then(response => {
          this.setState({
            comments: response.comments

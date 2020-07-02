@@ -15,10 +15,10 @@
         if (!props.warn) {
           return null;
         }
-      
+
         return (
           <div className="warning">
-            Warning!
+            Aviso!
           </div>
         );
       }
@@ -29,13 +29,13 @@
           this.state = {showWarning: true};
           this.handleToggleClick = this.handleToggleClick.bind(this);
         }
-      
+
         handleToggleClick() {
           this.setState(state => ({
             showWarning: !state.showWarning
           }));
         }
-      
+
         render() {
           return (
             <div>
