@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tag select</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      class FlavorForm extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {value: 'coco'};
+
+          this.handleChange = this.handleChange.bind(this);
+          this.handleSubmit = this.handleSubmit.bind(this);
+        }
+
+        handleChange(event) {
+          this.setState({value: event.target.value});
+        }
+
+        handleSubmit(event) {
+          alert('Seu sabor favorito é: ' + this.state.value);
+          event.preventDefault();
+        }
+
+        render() {
+          return (
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Escolha seu sabor favorito:
+                <select value={this.state.value} onChange={this.handleChange}>
+                  <option value="laranja">Laranja</option>
+                  <option value="limao">Limão</option>
+                  <option value="coco">Coco</option>
+                  <option value="manga">Manga</option>
+                </select>
+              </label>
+              <input type="submit" value="Enviar" />
+            </form>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <FlavorForm />,
+        document.getElementById('root')
+      );
+
+    </script>
+
+    <!-- <select>
+      <option value="laranja">Laranja</option>
+      <option value="limao">Limão</option>
+      <option selected value="coco">Coco</option>
+      <option value="manga">Manga</option>
+    </select> -->
+
+    <!-- <select multiple={true} value={['B', 'C']}> -->
+
+  </body>
+</html>
