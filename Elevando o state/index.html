@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Elevando o state</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      function BoilingVerdict(props) {
+        if (props.celsius >= 100) {
+          return <p>A água ferveria.</p>;
+        }
+        return <p>A água não ferveria.</p>;
+      }
+
+      class Calculator extends React.Component {
+        constructor(props) {
+          super(props);
+          this.handleChange = this.handleChange.bind(this);
+          this.state = {temperature: ''};
+        }
+
+        handleChange(e) {
+          this.setState({temperature: e.target.value});
+        }
+
+        render() {
+          const temperature = this.state.temperature;
+          return (
+            <fieldset>
+              <legend>Informe a temperatura em Celsius:</legend>
+              <input
+                value={temperature}
+                onChange={this.handleChange} />
+              <BoilingVerdict
+                celsius={parseFloat(temperature)} />
+            </fieldset>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <Calculator />,
+        document.getElementById('root')
+      );
+
+    </script>
+  </body>
+</html>
